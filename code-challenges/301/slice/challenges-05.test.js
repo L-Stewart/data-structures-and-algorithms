@@ -84,6 +84,7 @@ const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
   return result;
+
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -150,6 +151,15 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
+  if(numberOfCharacters > str.length){
+    return '';
+  }else if(numberOfCharacters < 0){
+    return str;
+  }else if(numberOfCharacters <= str.length){
+    let a = str.length - numberOfCharacters;
+    console.log(a);
+    return str.slice(0, a);
+  }
 };
 
 
@@ -254,21 +264,21 @@ describe('Testing challenge 2', () => {
 //   });
 // });
 
-// describe('Testing challenge 7', () => {
-//   test('It should shorten the string based on the first argument', () => {
-//     expect(removeLastCharacters('Gregor', 2)).toStrictEqual('Greg');
-//     expect(removeLastCharacters('Gregor', 2).length).toStrictEqual(4);
-//   });
-//   test('It should return the complete string when passed a negative number', () => {
-//     expect(removeLastCharacters('hello', -1)).toStrictEqual('hello');
-//     expect(removeLastCharacters('wowow', -700)).toStrictEqual('wowow');
-//   });
-//   test('It should return an empty string when called with a number larger than the string length', () => {
-//     expect(removeLastCharacters('hello', 12)).toStrictEqual('');
-//     expect(removeLastCharacters('', 1)).toStrictEqual('');
-//     expect(removeLastCharacters('a', 1)).toStrictEqual('');
-//   });
-// });
+describe('Testing challenge 7', () => {
+  test('It should shorten the string based on the first argument', () => {
+    expect(removeLastCharacters('Gregor', 2)).toStrictEqual('Greg');
+    expect(removeLastCharacters('Gregor', 2).length).toStrictEqual(4);
+  });
+  test('It should return the complete string when passed a negative number', () => {
+    expect(removeLastCharacters('hello', -1)).toStrictEqual('hello');
+    expect(removeLastCharacters('wowow', -700)).toStrictEqual('wowow');
+  });
+  test('It should return an empty string when called with a number larger than the string length', () => {
+    expect(removeLastCharacters('hello', 12)).toStrictEqual('');
+    expect(removeLastCharacters('', 1)).toStrictEqual('');
+    expect(removeLastCharacters('a', 1)).toStrictEqual('');
+  });
+});
 
 // describe('Testing challenge 8', () => {
 //   test('It should add up the numbers contained within the string', () => {
