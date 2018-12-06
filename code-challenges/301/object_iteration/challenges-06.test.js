@@ -126,6 +126,17 @@ The input and output of this function are the same as the input and output from 
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
+  let kids = [];
+  for(let i in arr){
+    if(character == arr[i].name){
+      kids.push(Object.values(arr[i].children));
+    }
+  }
+  if(kids[0].length < 1){
+    return false;
+  }else{
+    return true;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -208,15 +219,15 @@ describe('Testing challenge 4', () => {
   });
 });
 
-// describe('Testing challenge 5', () => {
-//   test('It should return true for characters that have children', () => {
-//     expect(hasChildrenEntries(characters, 'Eddard')).toBeTruthy();
-//   });
+describe('Testing challenge 5', () => {
+  test('It should return true for characters that have children', () => {
+    expect(hasChildrenEntries(characters, 'Eddard')).toBeTruthy();
+  });
 
-//   test('It should return false to characters who do not have children', () => {
-//     expect(hasChildrenEntries(characters, 'Jon S.')).toBeFalsy();
-//   });
-// });
+  test('It should return false to characters who do not have children', () => {
+    expect(hasChildrenEntries(characters, 'Jon S.')).toBeFalsy();
+  });
+});
 
 // describe('Testing challenge 6', () => {
 //   test('It should return an object for each house containing the name and size', () => {
