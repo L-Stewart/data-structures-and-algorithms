@@ -3,7 +3,7 @@
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
 
-Write a function named getCourseKeys that takes in the courseInfo object and returns an array containing the keys for the courseInfo object. 
+Write a function named getCourseKeys that takes in the courseInfo object and returns an array containing the keys for the courseInfo object.
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
@@ -14,7 +14,7 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
 const getCourseKeys = (obj) => {
   // Solution code here...
   return Object.keys(obj);
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -66,12 +66,12 @@ let characters = [
     children: [],
     house: 'Snow'
   }
-]
+];
 
 const totalCharacters = (arr) => {
   // Solution code here...
   return arr.length;
-}
+};
 
 /*------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -86,7 +86,7 @@ const getHouses = (arr) => {
     houses.push(arr[i].house);
   }
   return houses;
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -95,14 +95,26 @@ Write a function named hasChildrenValues that uses Object.values to determine if
 
 This function should take in an array of data and a character name and return a Boolean.
 
-For example: 
-hasChildrenValues(characters, 'Sansa') will return true 
+For example:
+hasChildrenValues(characters, 'Sansa') will return true
 hasChildrenValues(characters, 'Eddard') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-}
+  let kids = [];
+  for(let i in arr){
+    if(character == arr[i].name){
+      console.log(arr[i].children);
+      kids.push(Object.values(arr[i].children));
+    }
+  }
+  if(kids[0].length < 1){
+    return false;
+  }else{
+    return true;
+  }
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -114,7 +126,7 @@ The input and output of this function are the same as the input and output from 
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
@@ -130,7 +142,7 @@ const houseSize = (arr) => {
   const sizes = [];
   // Solution code here...
   return sizes;
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -154,7 +166,7 @@ const houseSurvivors = (arr) => {
   const survivors = [];
   // Solution code here...
   return survivors;
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -186,15 +198,15 @@ describe('Testing challenge 3', () => {
   });
 });
 
-// describe('Testing challenge 4', () => {
-//   test('It should return true for characters that have children', () => {
-//     expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
-//   });
+describe('Testing challenge 4', () => {
+  test('It should return true for characters that have children', () => {
+    expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
+  });
 
-//   test('It should return false to characters who do not have children', () => {
-//     expect(hasChildrenValues(characters, 'Sansa')).toBeFalsy();
-//   });
-// });
+  test('It should return false to characters who do not have children', () => {
+    expect(hasChildrenValues(characters, 'Sansa')).toBeFalsy();
+  });
+});
 
 // describe('Testing challenge 5', () => {
 //   test('It should return true for characters that have children', () => {
