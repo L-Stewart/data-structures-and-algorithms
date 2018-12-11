@@ -12,10 +12,10 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 
 const forLoopTwoToThe = (arr) => {
   // Solution code here...
-  let r = []
+  let r = [];
   for(let i in arr){
-    let n = arr[i]
-    r.push(Math.pow(2, n))
+    let n = arr[i];
+    r.push(Math.pow(2, n));
   }
   return r;
 };
@@ -28,6 +28,12 @@ Write a function named forEachTwoToThe that produces the same output as your for
 
 const forEachTwoToThe = (arr) => {
   // Solution code here...
+  let r = [];
+  function powers(int){
+    r.push(Math.pow(2, int));
+  }
+  arr.forEach(powers);
+  return r;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -184,16 +190,16 @@ describe('Testing challenge 1', () => {
   });
 });
 
-// describe('Testing challenge 2', () => {
-//   test('It should return two raised to the power of the integer', () => {
-//     expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
-//     expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
-//   });
+describe('Testing challenge 2', () => {
+  test('It should return two raised to the power of the integer', () => {
+    expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
+    expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
+  });
 
-//   test('It should return decimals if the integer is negative', () => {
-//     expect(forEachTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
-//   });
-// });
+  test('It should return decimals if the integer is negative', () => {
+    expect(forEachTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
+  });
+});
 
 // describe('Testing challenge 3', () => {
 //   test('It should return two raised to the power of the integer', () => {
