@@ -75,9 +75,9 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 const evenOdd = (arr) => {
   // Solution code here...
   return arr.map(intCheck => {
-    if(intCheck % 2 == 0){
+    if(intCheck % 2 === 0){
       return 'even';
-    }else if(intCheck % 2 == 1){
+    }else if(intCheck % 2 === 1){
       return 'odd';
     }else{
       return 'N/A';
@@ -129,6 +129,9 @@ const snorlaxAbilities = {
 
 const extractAbilities = (arr) => {
   // Solution code here...
+  return arr.map(item => {
+    return item.ability.name;
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -251,12 +254,12 @@ describe('Testing challenge 5', () => {
   });
 });
 
-// describe('Testing challenge 6', () => {
-//   test('It should return an array containing only the ability names', () => {
-//     expect(extractAbilities(snorlaxAbilities.abilities)).toStrictEqual(['gluttony', 'cute charm', 'immunity']);
-//     expect(extractAbilities(snorlaxAbilities.abilities).length).toStrictEqual(3);
-//   });
-// });
+describe('Testing challenge 6', () => {
+  test('It should return an array containing only the ability names', () => {
+    expect(extractAbilities(snorlaxAbilities.abilities)).toStrictEqual(['gluttony', 'cute charm', 'immunity']);
+    expect(extractAbilities(snorlaxAbilities.abilities).length).toStrictEqual(3);
+  });
+});
 
 // describe('Testing challenge 7', () => {
 //   test('It should return an array containing objects with name and total values', () => {
