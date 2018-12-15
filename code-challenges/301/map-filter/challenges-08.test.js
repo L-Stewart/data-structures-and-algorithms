@@ -10,7 +10,7 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (arr) => {
   // Solution code here...
-  return arr.filter((i) => {return (i % 2)})
+  return arr.filter((i) => {return (i % 2);});
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,6 +26,8 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 const filterStringsWithVowels = (arr) => {
   // Solution code here...
+  let reg = /[aeiou]+/gi;
+  return arr.filter(vowels => (vowels.match(reg)));
 };
 
 
@@ -39,6 +41,7 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
+  return arr.filter(i => !forbiddenValues.includes(i));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -181,42 +184,42 @@ describe('Testing challenge 1', () => {
   });
 });
 
-// describe('Testing challenge 2', () => {
-//   test('It should return an array containing only words that have vowels', () => {
-//     expect(filterStringsWithVowels(['gregor','hound','xyz'])).toStrictEqual(['gregor', 'hound']);
-//     expect(filterStringsWithVowels(['gregor','hound','xyz']).length).toStrictEqual(2);
-//     expect(filterStringsWithVowels(['a', 'b', 'cdefg'])).toStrictEqual(['a', 'cdefg']);
-//     expect(filterStringsWithVowels(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ''])).toStrictEqual(['a', 'e', 'i', 'o', 'u']);
-//   });
+describe('Testing challenge 2', () => {
+  test('It should return an array containing only words that have vowels', () => {
+    expect(filterStringsWithVowels(['gregor','hound','xyz'])).toStrictEqual(['gregor', 'hound']);
+    expect(filterStringsWithVowels(['gregor','hound','xyz']).length).toStrictEqual(2);
+    expect(filterStringsWithVowels(['a', 'b', 'cdefg'])).toStrictEqual(['a', 'cdefg']);
+    expect(filterStringsWithVowels(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ''])).toStrictEqual(['a', 'e', 'i', 'o', 'u']);
+  });
 
-//   test('It should not contain any words that do not contain vowels', () => {
-//     expect(filterStringsWithVowels(['gregor','hound','xyz'])).not.toContain('xyz');
-//   })
-// });
+  test('It should not contain any words that do not contain vowels', () => {
+    expect(filterStringsWithVowels(['gregor','hound','xyz'])).not.toContain('xyz');
+  });
+});
 
-// describe('Testing challenge 3', () => {
-//   const firstNums = [1, 2, 3];
-//   const secondNums = [1, 2, 3, 4];
+describe('Testing challenge 3', () => {
+  const firstNums = [1, 2, 3];
+  const secondNums = [1, 2, 3, 4];
 
-//   const firstStrings = ['Demi', 'Gregor', 'Hound'];
-//   const secondStrings = ['Gary', 'Charlotte', 'Demi', 'Gregor', 'Hound'];
+  const firstStrings = ['Demi', 'Gregor', 'Hound'];
+  const secondStrings = ['Gary', 'Charlotte', 'Demi', 'Gregor', 'Hound'];
 
-//   test('It should return an array that includes any elements not in the first array', () => {
-//     expect(notInFirstArray(firstNums, secondNums)).toStrictEqual([4]);
-//     expect(notInFirstArray(firstNums, secondNums).length).toStrictEqual(1);
-//   });
+  test('It should return an array that includes any elements not in the first array', () => {
+    expect(notInFirstArray(firstNums, secondNums)).toStrictEqual([4]);
+    expect(notInFirstArray(firstNums, secondNums).length).toStrictEqual(1);
+  });
 
-//   test('It should also work with an array of strings', () => {
-//     expect(notInFirstArray(firstStrings, secondStrings)).toStrictEqual(['Gary', 'Charlotte']);
-//     expect(notInFirstArray(firstStrings, secondStrings).length).toStrictEqual(2);
-//   });
+  test('It should also work with an array of strings', () => {
+    expect(notInFirstArray(firstStrings, secondStrings)).toStrictEqual(['Gary', 'Charlotte']);
+    expect(notInFirstArray(firstStrings, secondStrings).length).toStrictEqual(2);
+  });
 
-//   test('It should work with empty arrays', () => {
-//     expect(notInFirstArray([], [])).toStrictEqual([]);
-//     expect(notInFirstArray([], [1,2,3,4,5])).toStrictEqual([1,2,3,4,5]);
-//     expect(notInFirstArray([1,2,3,4,5], [])).toStrictEqual([]);
-//   });
-// });
+  test('It should work with empty arrays', () => {
+    expect(notInFirstArray([], [])).toStrictEqual([]);
+    expect(notInFirstArray([], [1,2,3,4,5])).toStrictEqual([1,2,3,4,5]);
+    expect(notInFirstArray([1,2,3,4,5], [])).toStrictEqual([]);
+  });
+});
 
 // describe('Testing challenge 4', () => {
 //   test('It should return an array containing the stats that are greater than the input', () => {
