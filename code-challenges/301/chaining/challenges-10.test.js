@@ -18,13 +18,13 @@ const count = (target, input) => {
       if(num === target){
         acc2++;
       }
-        // console.log(acc2 + 'inner')
+      // console.log(acc2 + 'inner')
       return acc2;
     }, 0);
     // console.log(acc +'acc ' + result + 'result')
     return acc += result;
   }, 0);
-  
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -39,6 +39,16 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
+  return input.reduce(function(acc,cur,ind) {
+    let result = cur.reduce(function(accumulator,value,idx) {
+      accumulator = accumulator + value;
+      // console.log(accumulator)
+      return accumulator;
+    }, 0);
+    // console.log(result)
+    acc = acc + result;
+    return acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -117,11 +127,20 @@ let starWarsData = [{
   eye_color: 'brown',
   birth_year: '19BBY',
   gender: 'female'
-}]
+}];
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
-}
+  let names = data.reduce(function(acc, val, inx){
+    // console.log(val.name);
+    if(val.gender === 'male' || val.gender === 'female')
+      acc = acc + val.name + ' and ';
+    return acc;
+  },'');
+  let len = names.length - 5;
+  let final = names.slice(0, len);
+  return final;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -131,7 +150,7 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 
 let findShortest = (data) => {
   // Solution code here...
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -153,16 +172,16 @@ describe('Testing challenge 1', () => {
   test('It should work on empty arrays', () => {
     expect(count(5, [[1, 3, 5, 7, 9], [], [5, 5, 5], [1, 2, 3], []])).toStrictEqual(4);
     expect(count(5, [])).toStrictEqual(0);
-  })
+  });
 });
 
-// describe('Testing challenge 2', () => {
-//   test('It should add all the numbers in the arrays', () => {
-//     const nums = [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]];
+describe('Testing challenge 2', () => {
+  test('It should add all the numbers in the arrays', () => {
+    const nums = [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]];
 
-//     expect(totalSum(nums)).toStrictEqual(66);
-//   });
-// });
+    expect(totalSum(nums)).toStrictEqual(66);
+  });
+});
 
 // describe('Testing challenge 3', () => {
 //   test('It should return numbers divisible by five, then raise two to the power of the resulting numbers', () => {
@@ -178,12 +197,12 @@ describe('Testing challenge 1', () => {
 //   });
 // });
 
-// describe('Testing challenge 4', () => {
-//   test('It should return only characters that are male or female', () => {
-//     expect(findMaleAndFemale(starWarsData)).toStrictEqual('Luke Skywalker and Darth Vader and Leia Organa');
-//     expect(findMaleAndFemale([{ name: 'person', gender: 'female' }, { gender: 'lol' }, { name: 'persontwo', gender: 'male' }])).toStrictEqual('person and persontwo');
-//   });
-// });
+describe('Testing challenge 4', () => {
+  test('It should return only characters that are male or female', () => {
+    expect(findMaleAndFemale(starWarsData)).toStrictEqual('Luke Skywalker and Darth Vader and Leia Organa');
+    expect(findMaleAndFemale([{ name: 'person', gender: 'female' }, { gender: 'lol' }, { name: 'persontwo', gender: 'male' }])).toStrictEqual('person and persontwo');
+  });
+});
 
 // describe('Testing challenge 5', () => {
 //   test('It should return the name of the shortest character', () => {
