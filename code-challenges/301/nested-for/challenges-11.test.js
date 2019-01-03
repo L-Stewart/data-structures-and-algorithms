@@ -74,6 +74,16 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 
 const findTagNames = elements => {
   // Solution code here...
+  // let reg = /\/[a-z0-9]\w{2}|\/[a-z0-9]\w|\/[a-z]/;
+  let final = []
+  elements.forEach(element => {
+    let build = element.match(/\/[a-z0-9]\w{2}|\/[a-z0-9]\w|\/[a-z]/g);
+    final.push(build);
+  });
+  let ans = final.concat(final[0], final[1]);
+  ans.shift();
+  ans.shift();
+  return ans;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -153,11 +163,11 @@ describe('Testing challenge 3', () => {
   })
 });
 
-// describe('Testing challenge 4', () => {
-//   test('It should return the closing tags', () => {
-//     expect(findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])).toStrictEqual([ '/h1', '/p' ]);
-//   });
-//   test('It should work if there are multiple closing tags in a single string', () => {
-//     expect(findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])).toStrictEqual([ '/h1', '/div', '/p' ]);
-//   });
-// });
+describe('Testing challenge 4', () => {
+  test('It should return the closing tags', () => {
+    expect(findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])).toStrictEqual([ '/h1', '/p' ]);
+  });
+  test('It should work if there are multiple closing tags in a single string', () => {
+    expect(findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])).toStrictEqual([ '/h1', '/div', '/p' ]);
+  });
+});
