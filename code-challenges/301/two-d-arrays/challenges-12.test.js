@@ -75,6 +75,13 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
+  for(let i in arr){
+    if(arr[i].store != 'Pet store'){
+      return;
+    }else{
+      return arr[i].items[1].quantity;
+    }
+  }
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -109,6 +116,13 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 
 const calculateProduct = (numbers) => {
   // Solution code here...
+  let total = 1;
+  for( let i in numbers){
+    for(let j = 0; j < numbers[0].length; j++){
+      total = total * numbers[i][j];
+    }
+  }
+  return total;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -129,6 +143,16 @@ const weeklyTemperatures = [
 
 const averageDailyTemperature = (weather) => {
   // Solution code here...
+  let count = 0;
+  let total = 0;
+  for( let i in weather){
+    for(let j = 0; j < weather[0].length; j++){
+      total = total + weather[i][j];
+      count++
+    }
+  }
+  return total / count;
+  // console.log(total, count)
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -233,24 +257,24 @@ describe('Testing challenge 2', () => {
 //   });
 // });
 
-// describe('Testing challenge 5', () => {
-//   test('It should multiply all the numbers together', () => {
-//     expect(calculateProduct([[1,2], [3,4], [5,6]])).toStrictEqual(720);
-//   });
+describe('Testing challenge 5', () => {
+  test('It should multiply all the numbers together', () => {
+    expect(calculateProduct([[1,2], [3,4], [5,6]])).toStrictEqual(720);
+  });
 
-//   test('It should return zero if there are any zeroes in the data', () => {
-//     expect(calculateProduct([[2, 3, 4, 6, 0], [4, 3, 7], [2, 4, 6]])).toStrictEqual(0);
-//   });
-//   test('It should work even if some of the arrays contain no numbers', () => {
-//     expect(calculateProduct([[1,2], [], [3,4,5]])).toStrictEqual(120);
-//   });
-// });
+  test('It should return zero if there are any zeroes in the data', () => {
+    expect(calculateProduct([[2, 3, 4, 6, 0], [4, 3, 7], [2, 4, 6]])).toStrictEqual(0);
+  });
+  test('It should work even if some of the arrays contain no numbers', () => {
+    expect(calculateProduct([[1,2], [], [3,4,5]])).toStrictEqual(120);
+  });
+});
 
-// describe('Testing challenge 6', () => {
-//   test('It should calculate and return the average temperature of the data set', () => {
-//     expect(averageDailyTemperature(weeklyTemperatures)).toStrictEqual(60.25);
-//   });
-// });
+describe('Testing challenge 6', () => {
+  test('It should calculate and return the average temperature of the data set', () => {
+    expect(averageDailyTemperature(weeklyTemperatures)).toStrictEqual(60.25);
+  });
+});
 
 // describe('Testing challenge 7', () => {
 //   test('It should return the lowest weekly average temperature within the data set', () => {
