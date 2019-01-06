@@ -104,6 +104,11 @@ The top row of the board is considered row zero and row numbers increase as they
 
 const battleship = (board, row, col) => {
   //  Solution code here...
+  if(board[row][col] === '#'){
+    return 'hit';
+  }else {
+    return 'miss';
+  }
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -116,13 +121,6 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 
 const calculateProduct = (numbers) => {
   // Solution code here...
-  let total = 1;
-  for( let i in numbers){
-    for(let j = 0; j < numbers[0].length; j++){
-      total = total * numbers[i][j];
-    }
-  }
-  return total;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -148,7 +146,7 @@ const averageDailyTemperature = (weather) => {
   for( let i in weather){
     for(let j = 0; j < weather[0].length; j++){
       total = total + weather[i][j];
-      count++
+      count++;
     }
   }
   return total / count;
@@ -238,37 +236,37 @@ describe('Testing challenge 2', () => {
 //   });
 // });
 
-// describe('Testing challenge 4', () => {
-//   const battleshipData = [
-//     ['#', ' ', '#', ' '],
-//     ['#', ' ', '#', ' '],
-//     ['#', ' ', ' ', ' '],
-//     [' ', ' ', '#', '#'],
-//   ];
+describe('Testing challenge 4', () => {
+  const battleshipData = [
+    ['#', ' ', '#', ' '],
+    ['#', ' ', '#', ' '],
+    ['#', ' ', ' ', ' '],
+    [' ', ' ', '#', '#'],
+  ];
 
-//   test('It should return "hit" when it hits a boat', () => {
-//     expect(battleship(battleshipData, 0, 0)).toStrictEqual('hit');
-//     expect(battleship(battleshipData, 1, 0)).toStrictEqual('hit');
-//   });
-
-//   test('It should return "miss" when it doesn\'t hit a boat', () => {
-//     expect(battleship(battleshipData, 0, 1)).toStrictEqual('miss');
-//     expect(battleship(battleshipData, 3, 0)).toStrictEqual('miss');
-//   });
-// });
-
-describe('Testing challenge 5', () => {
-  test('It should multiply all the numbers together', () => {
-    expect(calculateProduct([[1,2], [3,4], [5,6]])).toStrictEqual(720);
+  test('It should return "hit" when it hits a boat', () => {
+    expect(battleship(battleshipData, 0, 0)).toStrictEqual('hit');
+    expect(battleship(battleshipData, 1, 0)).toStrictEqual('hit');
   });
 
-  test('It should return zero if there are any zeroes in the data', () => {
-    expect(calculateProduct([[2, 3, 4, 6, 0], [4, 3, 7], [2, 4, 6]])).toStrictEqual(0);
-  });
-  test('It should work even if some of the arrays contain no numbers', () => {
-    expect(calculateProduct([[1,2], [], [3,4,5]])).toStrictEqual(120);
+  test('It should return "miss" when it doesn\'t hit a boat', () => {
+    expect(battleship(battleshipData, 0, 1)).toStrictEqual('miss');
+    expect(battleship(battleshipData, 3, 0)).toStrictEqual('miss');
   });
 });
+
+// describe('Testing challenge 5', () => {
+//   test('It should multiply all the numbers together', () => {
+//     expect(calculateProduct([[1,2], [3,4], [5,6]])).toStrictEqual(720);
+//   });
+
+//   test('It should return zero if there are any zeroes in the data', () => {
+//     expect(calculateProduct([[2, 3, 4, 6, 0], [4, 3, 7], [2, 4, 6]])).toStrictEqual(0);
+//   });
+//   test('It should work even if some of the arrays contain no numbers', () => {
+//     expect(calculateProduct([[1,2], [], [3,4,5]])).toStrictEqual(120);
+//   });
+// });
 
 describe('Testing challenge 6', () => {
   test('It should calculate and return the average temperature of the data set', () => {
