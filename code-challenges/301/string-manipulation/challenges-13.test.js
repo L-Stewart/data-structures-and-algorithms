@@ -140,6 +140,11 @@ For example, ['abcd', 'efgh', 'ijkl', 'mnop'] returns ['a', 'f', 'k', 'p']
 
 const characterByIndex = (arr) => {
   // Solution code here...
+  let final = [];
+  for(let i = 0; i < arr.length; i++){
+    final.push(arr[i].charAt(i));
+  }
+  return final;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -264,12 +269,12 @@ describe('Testing challenge 4', () => {
 //   });
 // });
 
-// describe('Testing challenge 10', () => {
-//   test('It should return the ith character of the ith string', () => {
-//     const words = ['apple', 'banana', 'cantaloupe'];
+describe('Testing challenge 10', () => {
+  test('It should return the ith character of the ith string', () => {
+    const words = ['apple', 'banana', 'cantaloupe'];
 
-//     expect(characterByIndex(words)).toStrictEqual(['a', 'a', 'n']);
-//     expect(characterByIndex(['abc', 'def', 'ghi'])).toStrictEqual(['a', 'e', 'i']);
-//     expect(characterByIndex(['wow', 'wow', 'wow'])).toStrictEqual(['w', 'o', 'w']);
-//   });
-// });
+    expect(characterByIndex(words)).toStrictEqual(['a', 'a', 'n']);
+    expect(characterByIndex(['abc', 'def', 'ghi'])).toStrictEqual(['a', 'e', 'i']);
+    expect(characterByIndex(['wow', 'wow', 'wow'])).toStrictEqual(['w', 'o', 'w']);
+  });
+});
