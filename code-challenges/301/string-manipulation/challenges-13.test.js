@@ -65,6 +65,18 @@ Write a function named allHappy that takes in an array of strings and returns a 
 
 const allHappy = (arr) => {
   // Solution code here...
+  let final = [];
+  for(let i = 0; i < arr.length; i++){
+    final.push(arr[i].includes(':)'));
+  }
+  // console.log(final)
+  let test = final.includes(false)
+  // console.log(test)
+  if(test === false){
+    return true;
+  }else{
+    return false;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -87,7 +99,7 @@ const findEvery = (arr, target) => {
   // Solution code here...
   let final = [];
   for(let i = 0; i < arr.length; i++){
-   final.push(arr[i].includes(target));
+    final.push(arr[i].includes(target));
   }
   // console.log(final)
   let test = final.includes(false)
@@ -210,15 +222,15 @@ describe('Testing challenge 4', () => {
   });
 });
 
-// describe('Testing challenge 5', () => {
-//   test('It should correctly assess whether all the strings are happy', () => {
-//     const words = ['things', 'apple (:)', ':)banana', 'missing that thing', 'cant:)aloupe'];
+describe('Testing challenge 5', () => {
+  test('It should correctly assess whether all the strings are happy', () => {
+    const words = ['things', 'apple (:)', ':)banana', 'missing that thing', 'cant:)aloupe'];
 
-//     expect(allHappy(words)).toStrictEqual(false);
-//     expect(allHappy(['apple (:)', ':)banana', 'cant:)aloupe'])).toStrictEqual(true);
-//     expect(allHappy([])).toStrictEqual(true);
-//   });
-// });
+    expect(allHappy(words)).toStrictEqual(false);
+    expect(allHappy(['apple (:)', ':)banana', 'cant:)aloupe'])).toStrictEqual(true);
+    expect(allHappy([])).toStrictEqual(true);
+  });
+});
 
 // describe('Testing challenge 6', () => {
 //   test('It should find all the strings that contain a given string', () => {
